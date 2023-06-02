@@ -83,7 +83,7 @@ func (em *MockserverClient) SetRandomValuePath(path string) error {
 	return err
 }
 
-// SetValuePath sets an int for a path
+// SetValuePath sets an int to return when hitting a particular endpoint
 func (em *MockserverClient) SetValuePath(path string, v int) error {
 	if !strings.HasPrefix(path, "/") {
 		path = fmt.Sprintf("/%s", path)
@@ -111,7 +111,7 @@ func (em *MockserverClient) SetValuePath(path string, v int) error {
 }
 
 // SetAnyValuePath sets any type of value for a path
-func (em *MockserverClient) SetAnyValuePath(path string, v interface{}) error {
+func (em *MockserverClient) SetAnyValuePath(path string, v any) error {
 	sanitizedPath := strings.ReplaceAll(path, "/", "_")
 	id := fmt.Sprintf("%s_mock_id", sanitizedPath)
 	log.Debug().Str("ID", id).
@@ -125,13 +125,13 @@ func (em *MockserverClient) SetAnyValuePath(path string, v interface{}) error {
 			Body: struct {
 				Id   string
 				Data struct {
-					Result interface{}
+					Result any
 				}
-				Error interface{}
+				Error any
 			}{
 				Id: "",
 				Data: struct {
-					Result interface{}
+					Result any
 				}{
 					Result: v,
 				},
