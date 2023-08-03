@@ -2,7 +2,7 @@
 
 This folder contains the bulk of code that handles integrating with different EVM chains. If you're looking to run tests on a new EVM chain, and are having issues with the default implementation, you've come to the right place.
 
-### Some Terminology
+## Some Terminology
 
 * [L2 Chain](https://ethereum.org/en/layer-2/): A Layer 2 chain "branching" off Ethereum.
 * [EVM](https://ethereum.org/en/developers/docs/evm/): Ethereum Virtual Machine that underpins the Ethereum blockchain.
